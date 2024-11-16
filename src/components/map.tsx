@@ -2,13 +2,8 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
-interface MapProps {
-  markers?: {
-    name: string;
-    position: [number, number];
-    url: string;
-  }[];
-}
+import { MapProps } from "@/interfaces/map";
+
 function Map({ markers }: MapProps) {
   return (
     <div className="w-full min-h-96 h-full">
@@ -27,7 +22,10 @@ function Map({ markers }: MapProps) {
           return (
             <Marker key={i} position={marker.position}>
               <Popup>
-                <Link target="_self" to={`/stations/${marker.url}`}>
+                <Link
+                  target="_self"
+                  to={`/stations/${marker.url}?id=${marker.id}`}
+                >
                   <Button className="text-gray-950" variant={"link"}>
                     {marker.name}
                   </Button>

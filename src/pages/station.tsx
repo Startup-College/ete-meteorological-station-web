@@ -1,20 +1,32 @@
+import Loading from "@/components/loading";
 import useStation from "@/hooks/useStation";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 
 function Station() {
+  const [searchParams] = useSearchParams();
   const { stationName } = useParams();
-  const { getStationData, isLoading } = useStation();
+  const { getStationData, isLoading, readings } = useStation();
   useEffect(() => {
-    if (!stationName) {
+    const stationId = searchParams.get("id");
+    if (!stationId) {
       return;
     }
-    setInterval(() => {
-      getStationData(stationName);
-    }, 900000);
-  }, [getStationData, stationName]);
-  if (isLoading) return <div>Loading</div>;
-  return <div>Station</div>;
+
+    getStationData(stationId);
+  }, [searchParams]);
+
+  if (isLoading)
+    return (
+      <div className="w-full flex items-center justify-center pt-24">
+        <Loading size={64} />
+      </div>
+    );
+  return (
+    <div className="w-full flex flex-col items-center justify-center p-4">
+      <h1>{stationName?.split("-").join(" ")}</h1>
+    </div>
+  );
 }
 
 export default Station;
