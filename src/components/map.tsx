@@ -2,12 +2,9 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 import CustomDialog from "./custom-dialog";
+import { MarkerProps } from "@/interfaces/marker";
 interface MapProps {
-  markers?: {
-    name: string;
-    position: [number, number];
-    url: string;
-  }[];
+  markers?: MarkerProps[];
 }
 
 function Map({ markers }: MapProps) {

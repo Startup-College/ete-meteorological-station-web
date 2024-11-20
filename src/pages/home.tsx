@@ -1,9 +1,26 @@
+import Loading from "@/components/loading";
 import Map from "@/components/map";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import useStation from "@/hooks/useStation";
+import { ListStationsResponse } from "@/interfaces/stations";
 import { Label } from "@radix-ui/react-label";
+import { useEffect } from "react";
 
 function Home() {
+  const { getStationsPositions, isLoading, stations } = useStation();
+
+  useEffect(() => {
+    getStationsPositions();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex w-full h-full pt-24 items-center justify-center flex-1">
+        <Loading size={64} />
+      </div>
+    );
+  }
   return (
     <div className="w-full h-full flex flex-col">
       <div className="flex flex-col space-y-4">
@@ -32,13 +49,14 @@ function Home() {
         </div>
         <div className="h-96 w-full md:w-1/2 px-4 md:px-0 mx-auto">
           <Map
-            markers={[
-              {
-                name: "Estação ETE Gil Rodrigues",
-                position: [-8.139346734349745, -34.945850832525984],
-                url: "gil-rodrigues",
-              },
-            ]}
+            markers={stations.map((station: ListStationsResponse) => {
+              return {
+                name: station.name,
+                position: [Number(station.latitude), Number(station.longitude)],
+                lastReading: station.lastReading,
+                id: station.id,
+              };
+            })}
           />
         </div>
       </div>

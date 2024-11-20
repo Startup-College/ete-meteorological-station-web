@@ -7,7 +7,7 @@ function IndexRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/stations/:stationName" element={<Station />} />
+        <Route path="/stations/:stationId" element={<Station />} />
       </Routes>
     </BrowserRouter>
   );

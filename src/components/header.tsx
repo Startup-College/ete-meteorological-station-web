@@ -20,7 +20,9 @@ function Header() {
           Início
         </a>
         <a
-          href="#escola"
+          href="https://ete-webpage.onrender.com/#escola"
+          target="_self"
+          rel="noopener noreferrer"
           className={clsx(
             "border-b-2 border-transparent pb-[2px] hover:border-red-500"
           )}
@@ -28,13 +30,16 @@ function Header() {
           Escola
         </a>
         <a
-          href="#contato"
+          href="https://ete-webpage.onrender.com/#contato"
+          target="_self"
+          rel="noopener noreferrer"
           className={clsx(
             "border-b-2 border-transparent pb-[2px] hover:border-red-500"
           )}
         >
           Contato
         </a>
+        <a href="/">Estação</a>
         <a href="#" className="rounded-full bg-rainbow px-4 py-1 text-white">
           Secretaria
         </a>
