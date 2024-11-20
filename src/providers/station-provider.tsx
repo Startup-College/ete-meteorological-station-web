@@ -8,20 +8,44 @@ export function StationContextProvider({ children }: { children: ReactNode }) {
     setIsLoading(true);
     try {
       // Requisição Axios, no aguardo da API
-      const { data } = await axios.get("https://pokeapi.co/api/v2/pokemon");
+      const { data } = await axios.get(
+        `http://localhost:3333/api/v1/readings-by-station/${stationName}`
+      );
       console.log(stationName);
 
       console.log(data);
 
       setIsLoading(false);
+      return;
     } catch (error) {
       if (error instanceof AxiosError) {
         return setIsLoading(false), error.message;
       }
     }
   }
+
+  async function getLastReading() {
+    console.log("chamou");
+    setIsLoading(true);
+    try {
+      const { data } = await axios.get(
+        `http://localhost:3333/api/v1/last-readings-by-station`
+      );
+      console.log(data);
+      return;
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        return error.message;
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
-    <StationContext.Provider value={{ getStationData, isLoading }}>
+    <StationContext.Provider
+      value={{ getStationData, isLoading, getLastReading }}
+    >
       {children}
     </StationContext.Provider>
   );

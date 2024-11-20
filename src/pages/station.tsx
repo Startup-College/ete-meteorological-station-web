@@ -4,15 +4,13 @@ import { useParams } from "react-router-dom";
 
 function Station() {
   const { stationName } = useParams();
-  const { getStationData, isLoading } = useStation();
+  const { getLastReading, isLoading } = useStation();
   useEffect(() => {
     if (!stationName) {
       return;
     }
-    setInterval(() => {
-      getStationData(stationName);
-    }, 900000);
-  }, [getStationData, stationName]);
+    getLastReading();
+  }, []);
   if (isLoading) return <div>Loading</div>;
   return <div>Station</div>;
 }
