@@ -30,7 +30,7 @@ export function StationContextProvider({ children }: { children: ReactNode }) {
     try {
       const { data } = await server.get(`readings/${id}`);
       setReadings(data);
-      console.log(data);
+      // console.log(data);
       return;
     } catch (error) {
       if (error instanceof AxiosError) {
