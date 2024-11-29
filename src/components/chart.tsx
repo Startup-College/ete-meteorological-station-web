@@ -249,9 +249,6 @@ export function Chart({ data, type }: ChartProps) {
               <SelectItem value="30d" className="rounded-lg">
                 Últimos 30 dias
               </SelectItem>
-              <SelectItem value="90d" className="rounded-lg">
-                Últimos três meses
-              </SelectItem>
             </SelectContent>
           </Select>
         </div>

@@ -29,7 +29,7 @@ function Station() {
       <div className="w-full px-2 md:px-0 md:w-[90%] mx-auto ">
         <Chart data={readings} type={chartType} />
       </div>
-      <div className="flex md:flex-row md:space-y-0 md:space-x-4 flex-col items-center justify-center space-y-4">
+      <div className="grid grid-cols-2 md:flex md:flex-row md:space-y-0 md:space-x-4 flex-col items-center justify-center gap-2 md:gap-0 px-4 md:px-0">
         <Button onClick={() => setChartType("temperature")}>Temperatura</Button>
         <Button onClick={() => setChartType("humidity")}>Umidade</Button>
         <Button onClick={() => setChartType("rainfallVolume")}>

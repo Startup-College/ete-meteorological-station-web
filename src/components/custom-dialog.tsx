@@ -17,7 +17,7 @@ interface CustomDialogProps {
 
 function CustomDialog({ marker }: CustomDialogProps) {
   const [open, setOpen] = useState(false);
-  console.log(marker);
+  // console.log(marker);
 
   function handleMarkerClick() {
     setOpen(true); // Abre o Dialog ao clicar no Marker
