@@ -8,4 +8,8 @@ export interface MarkerProps {
     temperature: number;
   };
   id: number;
+  weather: {
+    icon: string;
+    description: string;
+  };
 }

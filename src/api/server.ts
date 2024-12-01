@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const server = axios.create({
-  baseURL: "http://localhost:3333/api/v1/",
+  baseURL: import.meta.env.VITE_PRODUCTION_API,
 });
 
 export default server;
