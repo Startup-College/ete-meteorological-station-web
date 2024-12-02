@@ -51,10 +51,8 @@ function Home() {
           <Map
             markers={stations.map((station: ListStationsResponse) => {
               return {
-                name: station.name,
                 position: [Number(station.latitude), Number(station.longitude)],
-                lastReading: station.lastReading,
-                id: station.id,
+                ...station,
               };
             })}
           />
