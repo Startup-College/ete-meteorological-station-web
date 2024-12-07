@@ -1,50 +1,48 @@
-# React + TypeScript + Vite
+# ETE Meteorological Station Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é o repositório da interface web para a estação meteorológica da ETE. Este projeto permite visualizar dados meteorológicos coletados de sensores conectados ao sistema.
 
-Currently, two official plugins are available:
+## Pré-requisitos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Antes de começar, certifique-se de ter instalado:
 
-## Expanding the ESLint configuration
+- **Node.js** na versão **18.0** ou superior
+- **Docker** e **Docker Compose**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Instalação
 
-- Configure the top-level `parserOptions` property like this:
+Siga os passos abaixo para configurar o projeto localmente:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. **Clone o repositório**
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+   ```bash
+   git clone https://github.com/Startup-College/ete-meteorological-station-web.git
+   cd ete-meteorological-station-web
+   ```
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+2. **Crie o arquivo `.env`**
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+   No diretório raiz do projeto, crie um arquivo chamado `.env` e adicione as seguintes variáveis de ambiente, substituindo as URLs fictícias pelas URLs reais fornecidas:
+
+   ```env
+   VITE_PRODUCTION_API="https://api.meteorological-station.com/v1/"
+   VITE_ICONS_URL="https://icons.meteorological-station.com/"
+   ```
+
+3. **Configure o ambiente**
+
+   Execute o projeto utilizando **Docker Compose** para construir e rodar os containers:
+
+   ```bash
+   docker-compose up --build
+   ```
+
+## Uso
+
+Após a configuração, o projeto estará disponível no navegador no endereço `http://localhost:3100` (ou na porta definida no arquivo de configuração do Docker Compose).
+
+Certifique-se de que o servidor de API esteja em execução e acessível pelas URLs configuradas no `.env`.
+
+---
+
+Esperamos que este projeto seja útil! Se tiver dúvidas, entre em contato ou abra uma issue. 🚀
